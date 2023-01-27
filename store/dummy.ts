@@ -1,4 +1,4 @@
-import { IDatabase, ITable } from "../interfaces/global.interfaces"
+import { IAuth, IDatabase, ITable } from "../interfaces/global.interfaces"
 
 const db : IDatabase = {
     user :[{
@@ -13,16 +13,16 @@ const db : IDatabase = {
 }
 
 
-async function list(tabla : string){
-    return db[tabla]
+async function list<T>(tabla : string) : Promise<T[]>{
+    return db[tabla] as T[]
 }
 
-async function get(tabla : string, id : number){
-    const col = await list(tabla)
-    return col.find(item => item.id === id)
+async function get<T>(tabla : string, id : number) : Promise<T>{
+    const col = await list<ITable>(tabla)
+    return  col.find((item : any )=> item.id === id) as T
 }
 
-async function upsert(tabla : string, data : any){
+async function upsert(tabla : string, data : ITable | IAuth ){
     return db[tabla].push(data)
 }
 

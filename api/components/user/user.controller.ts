@@ -9,12 +9,12 @@ export default function (db : dbFunction) {
     store = storeP;
   }
 
-  function list() {
-    return store.list(TABLA);
+  function list<T>() {
+    return store.list<T>(TABLA);
   }
 
-  function get(id: number) {
-    return store.get(TABLA,id);
+  function get<T>(id: number) {
+    return store.get<T>(TABLA,id);
   }
 
   return {
