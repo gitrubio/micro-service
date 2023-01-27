@@ -1,6 +1,6 @@
 import express, { response, Response } from "express";
 import { succes, error} from "../../../network/response";
-import userController from "../../controllers/index";
+import userController from "./index";
 const userRouter = express.Router();
 
 userRouter.get("/", async (req, res) => {

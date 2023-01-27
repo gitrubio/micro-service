@@ -8,7 +8,8 @@ const db : IDatabase = {
     {
         id : 2 ,
         name : 'jona than'
-    }]
+    }],
+    auth : []
 }
 
 
@@ -21,7 +22,7 @@ async function get(tabla : string, id : number){
     return col.find(item => item.id === id)
 }
 
-async function upset(tabla : string, data : ITable){
+async function upsert(tabla : string, data : any){
     return db[tabla].push(data)
 }
 
@@ -32,6 +33,6 @@ async function remove(tabla : string, id : number){
 export default {
     list,
     get,
-    upset,
+    upsert,
     db
 }

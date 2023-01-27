@@ -1,5 +1,5 @@
-import storeP from "../../store/dummy";
-import { dbFunction } from '../../interfaces/global.interfaces';
+import storeP from "../../../store/dummy";
+import { dbFunction } from '../../../interfaces/global.interfaces';
 
 const TABLA = 'user'
 
