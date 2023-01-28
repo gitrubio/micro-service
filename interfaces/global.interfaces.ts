@@ -3,7 +3,7 @@ export interface IDatabase {
 }
 
 export interface ITable {
-  id        : number;
+  id        : string;
   name      : string;
 
 }
@@ -14,9 +14,11 @@ export interface IAuth {
   username : string ;
   password : string ;
 }
-export interface dbFunction {
-  list  : <T>(tabla: string) => Promise<T[]>;
-  get   : <T>(tabla: string, id: number) => Promise<T | undefined>;
-  upsert: (tabla: string, data: (ITable | IAuth)) => Promise<number>;
-  db    : IDatabase;
+export interface dbFunction {  
+  list: <T>(tabla: string) => Promise<T[]>;
+  get: <T>(tabla: string, id: string) => Promise<T>;
+  upsert: <T>(tabla: string, data: ITable | IAuth) => Promise<T>;
+  query: (tabla: string, q: { [key: string]: any }) => Promise<any>;
+
+  db: IDatabase;
 }

@@ -9,7 +9,7 @@ export function succes(
   Res.status(status).send({
     error: false,
     status: status,
-    body: body,
+    body: body || null,
   } satisfies IResponse);
 }
 
