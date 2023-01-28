@@ -10,7 +10,7 @@ export interface ITable {
 
 
 export interface IAuth {
-  id : number ;
+  id : string ;
   username : string ;
   password : string ;
 }

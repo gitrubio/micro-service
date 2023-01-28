@@ -2,12 +2,13 @@ import express, { Response, Request } from "express";
 import { ITable } from "../../../interfaces/global.interfaces";
 import { succes, error } from "../../../network/response";
 import userController from "./index";
+import auth from './secure'
 const userRouter = express.Router();
 
 userRouter.get("/", list);
 userRouter.get("/:id", get);
 userRouter.post("/", upsert);
-userRouter.put("/", upsert);
+userRouter.put("/",auth('update'), upsert);
 
 async function list(req: Request, res: Response) {
   try {

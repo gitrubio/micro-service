@@ -25,8 +25,14 @@ async function get<T>(tabla : string, id : string) : Promise<T>{
 }
 
 async function upsert<T>(tabla : string, data : ITable | IAuth ) : Promise<T>{
-     db[tabla].push(data)
-     console.log(db)
+    const user = await get(tabla,data.id);
+    if(user) {
+       const datos = await list(tabla)
+        db[tabla] = (datos.filter((item : any ) => item.id !== data.id)) as any
+        db[tabla].push(data)
+    } else {
+        db[tabla].push(data)
+    }
      return data as T;
 }
 

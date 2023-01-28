@@ -1,4 +1,8 @@
 import 'dotenv/config'
-export const serverConfig = {
-    port : process.env.SERVER_PORT
+export const config = {
+    port : process.env.SERVER_PORT,
+
+    jwt: {
+        secret : 'secret'
+    }
 }

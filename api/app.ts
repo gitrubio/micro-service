@@ -1,5 +1,5 @@
 import express from 'express'
-import { serverConfig as config } from '../config/config'
+import { config } from '../config/config'
 import userRouter from './components/user/network'
 import authRouter from './components/auth/network';
 const app = express()
