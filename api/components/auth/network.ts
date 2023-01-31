@@ -1,6 +1,6 @@
 import express, { Response, Request } from "express";
 import { ITable, IAuth } from '../../../interfaces/global.interfaces';
-import { succes, error } from "../../../network/response";
+import responses from "../../../network/response";
 import authController from "./index";
 
 const authRouter = express.Router();
@@ -13,10 +13,10 @@ async function login(req :Request, res : Response) {
   try {
     const user = req.body;
     const data = await authController.login(user.username, user.password);
-    succes(req, res, data, 200);
+    responses.succes(req, res, data, 200);
   } catch (err) {
     console.log(err)
-    error(req, res, 'informacion invalida', 500);
+    responses.error(req, res, 'informacion invalida', 500);
   }
 }
 
@@ -24,10 +24,10 @@ async function login(req :Request, res : Response) {
 async function show(req :Request, res : Response) {
   try {
   const data  = await authController.getAll<IAuth>()
-  succes(req, res, data, 200);
+  responses.succes(req, res, data, 200);
   } catch (err) {
     console.log(err)
-    error(req, res, 'informacion no encontrada', 500);
+    responses.error(req, res, 'informacion no encontrada', 500);
   }
 }
 export default authRouter;

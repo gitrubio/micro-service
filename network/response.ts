@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { IResponse } from "./interfaces/response.interfaces";
-export function succes(
+ function succes(
   Req: Request,
   Res: Response,
   body: any,
@@ -13,7 +13,7 @@ export function succes(
   } satisfies IResponse);
 }
 
-export function error(
+ function error(
   Req: Request,
   Res: Response,
   body: any,
@@ -25,4 +25,9 @@ export function error(
     status: statusCode,
     body: body,
   } satisfies IResponse);
+}
+
+export default {
+  error,
+  succes
 }
