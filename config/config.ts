@@ -4,5 +4,11 @@ export const config = {
 
     jwt: {
         secret : 'secret'
+    },
+    db : {
+        host : 'localhost',
+        user : 'root',
+        password : 'admin',
+        database : 'productos'
     }
 }

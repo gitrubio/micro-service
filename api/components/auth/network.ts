@@ -14,9 +14,9 @@ async function login(req :Request, res : Response) {
     const user = req.body;
     const data = await authController.login(user.username, user.password);
     responses.succes(req, res, data, 200);
-  } catch (err) {
+  } catch (err : any ) {
     console.log(err)
-    responses.error(req, res, 'informacion invalida', 500);
+    responses.error(req, res, err.message , 500);
   }
 }
 

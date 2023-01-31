@@ -22,11 +22,12 @@ export default function (db: dbFunction) {
 
   async function login(username: string, password: string) {
     const data = await store.query(TABLA, { username: username });
+    if(!data) throw new Error("informacion invalidaaaaa");
     const crypt = await bycrpt.compare(password, data.password);
     if (crypt) {
       return auth.sign(data);
     }else{
-      throw new Error("informacion invalidaaaa");
+      throw new Error("usuario o contraseña invalido");
     }
   }
 
